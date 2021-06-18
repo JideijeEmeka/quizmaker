@@ -70,7 +70,7 @@ class _HomeState extends State<Home> {
                   child: Text("Hello,", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.bold,),
                   ),
                 ),
-                Text(" Welcome!", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,),),
+                Text(" Welcome!", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,),),,
               ],
             ),
           ],
