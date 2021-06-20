@@ -232,12 +232,18 @@ class QuizTile extends StatelessWidget {
                   Text(
                     title,
                     style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 22,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.bold, shadows: <Shadow> [
+                          Shadow(
+                            offset: Offset(2, 2),
+                            blurRadius: 2.2,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),
+                        ]),
                   ),
                   SizedBox(
-                    height: 6,
+                    height: 1,
                   ),
                   Text(
                     desc,
@@ -251,9 +257,16 @@ class QuizTile extends StatelessWidget {
             ),
             Positioned(
               bottom: -10,
+              right: 0,
+              height: 50,
+              width: 100,
               child: ElevatedButton(
-                child: Text("Delete", style: TextStyle(color: Colors.white, fontSize: 17,)),
+                child: Text("Delete Quiz", style: TextStyle(color: Colors.white, fontSize: 17,)),
                 onPressed: () {},)),
+                SizedBox(
+                    width: 5,
+                  ),
+                Icon(Icons.delete),
           ],
         ),
       ),

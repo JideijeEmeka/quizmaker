@@ -223,7 +223,7 @@ class QuizTile extends StatelessWidget {
                         fontWeight: FontWeight.bold, shadows: <Shadow> [
                           Shadow(
                             offset: Offset(2, 2),
-                            blurRadius: 2,
+                            blurRadius: 2.2,
                             color: Color.fromARGB(255, 0, 0, 0),
                           ),
                         ]),
