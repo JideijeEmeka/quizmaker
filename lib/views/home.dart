@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_maker/services/database.dart';
 import 'package:quiz_maker/views/play_quiz.dart';
+import 'package:quiz_maker/views/signin.dart';
 import 'package:quiz_maker/widgets/widgets.dart';
 
 class Home extends StatefulWidget {
@@ -11,16 +13,15 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   Stream quizStream;
   DatabaseService databaseService = new DatabaseService();
+  FirebaseAuth auth = FirebaseAuth.instance;
 
-  // FirebaseAuth auth = FirebaseAuth.instance;
+  signOut() async {
+    await auth.signOut();
+  }
 
-  // SignOut() async {
-  //   await FirebaseAuth.instance.signOut();
-  // }
-  
   Widget quizList() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 24),
+      margin: EdgeInsets.symmetric(horizontal: 25,),
       child: StreamBuilder(
           stream: quizStream,
           builder: (context, snapshot) {
@@ -51,6 +52,39 @@ class _HomeState extends State<Home> {
     super.initState();
   }
 
+  //AlertDialog
+  showAlertDialog(BuildContext context) {
+    Widget cancelButton = TextButton(
+      child: Text("Cancel", style: TextStyle(color: Colors.red, fontWeight: FontWeight.w800)),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+    Widget continueButton = TextButton(
+      child: Text("Continue", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w800)),
+      onPressed: () {
+        signOut();
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignIn()),
+                  (route) => false);
+      },
+    );
+    AlertDialog alertDialog = AlertDialog(
+      title: Text("Sign Out"),
+      content: Text("Are you sure you want to Signout?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alertDialog;
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,30 +94,83 @@ class _HomeState extends State<Home> {
         brightness: Brightness.light,
         elevation: 0.0,
       ),
-      body: Container(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24),
-                  child: Text("Hello,", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.bold,),
-                  ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Hello,",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
                 ),
-                Text(" Welcome!", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,),),,
-              ],
+              ),
+              Text(
+                " Welcome!",
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          Text("to Unn QuizMaker App",
+              style: TextStyle(
+                fontSize: 16,
+              )),
+          SizedBox(
+            height: 8,
+          ),
+          GestureDetector(
+            onTap: () {
+              showAlertDialog(context);
+            },
+            child: Container(
+              width: MediaQuery.of(context).size.width / 2 - 70,
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.7),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3),
+                    )
+                  ]),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Sign Out",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Icon(
+                    Icons.logout,
+                    size: 17,
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Expanded(
+            child: quizList(),
+          ),
+        ],
       ),
-      // quizList(),
-      // floatingActionButton: FloatingActionButton(
-      //   child: Icon(Icons.add),
-      //   onPressed: () {
-      //     Navigator.push(
-      //         context, MaterialPageRoute(builder: (context) => CreateQuiz()));
-      //   },
-      // ),
     );
   }
 }
@@ -113,7 +200,7 @@ class QuizTile extends StatelessWidget {
         child: Stack(
           children: [
             ClipRRect(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(10),
                 child: Image.network(
                   imgUrl,
                   width: MediaQuery.of(context).size.width - 48,
@@ -131,19 +218,19 @@ class QuizTile extends StatelessWidget {
                   Text(
                     title,
                     style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w500),
+                        color: Colors.black,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    height: 6,
+                    height: 1,
                   ),
                   Text(
                     desc,
                     style: TextStyle(
                         color: Colors.black54,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w800),
                   )
                 ],
               ),

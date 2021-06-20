@@ -44,7 +44,7 @@ class _ResultsState extends State<Results> {
                   },
                   child: blueButton(
                       context: context,
-                      label: "Submit Your Quiz",
+                      label: "Mail your Score",
                       buttonWidth: MediaQuery.of(context).size.width / 2))
             ],
           ),
