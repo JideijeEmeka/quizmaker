@@ -218,9 +218,15 @@ class QuizTile extends StatelessWidget {
                   Text(
                     title,
                     style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 22,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.bold, shadows: <Shadow> [
+                          Shadow(
+                            offset: Offset(2, 2),
+                            blurRadius: 2,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),
+                        ]),
                   ),
                   SizedBox(
                     height: 1,
