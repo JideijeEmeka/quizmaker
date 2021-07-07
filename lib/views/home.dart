@@ -1,3 +1,4 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_maker/services/database.dart';
@@ -70,7 +71,7 @@ class _HomeState extends State<Home> {
                   (route) => false);
       },
     );
-    AlertDialog alertDialog = AlertDialog(
+    AlertDialog signOutDialog = AlertDialog(
       title: Text("Sign Out"),
       content: Text("Are you sure you want to Signout?"),
       actions: [
@@ -81,7 +82,7 @@ class _HomeState extends State<Home> {
     showDialog(
         context: context,
         builder: (BuildContext context) {
-          return alertDialog;
+          return signOutDialog;
         });
   }
 
@@ -168,6 +169,14 @@ class _HomeState extends State<Home> {
           ),
           Expanded(
             child: quizList(),
+          ),
+          SizedBox(height: 13),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              appBar(context),
+              Text("(Powered by Unn...)", style: TextStyle(fontStyle: FontStyle.italic,)),
+            ],
           ),
         ],
       ),

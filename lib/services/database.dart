@@ -12,7 +12,8 @@ class DatabaseService {
   }
 
   Future<void> addQuestionData(Map questionData, String quizId) async {
-    await FirebaseFirestore.instance.collection("Quiz")
+    await FirebaseFirestore.instance
+        .collection("Quiz")
         .doc(quizId)
         .collection("QNA")
         .add(questionData)
@@ -25,7 +26,7 @@ class DatabaseService {
     return FirebaseFirestore.instance.collection("Quiz").snapshots();
   }
 
-  getQuizData(String quizId) async{
+  getQuizData(String quizId) async {
     return await FirebaseFirestore.instance
         .collection("Quiz")
         .doc(quizId)
@@ -33,4 +34,23 @@ class DatabaseService {
         .get();
   }
 
+  updateQuizData(String quizId, newValues) {
+    FirebaseFirestore.instance
+        .collection("Quiz")
+        .doc(quizId)
+        .update(newValues)
+        .catchError((e) {
+      print(e);
+    });
+  }
+
+  deleteQuizData(Map quizData, String quizId) {
+    FirebaseFirestore.instance
+        .collection("Quiz")
+        .doc(quizId)
+        .delete()
+        .catchError((e) {
+      print(e);
+    });
+  }
 }

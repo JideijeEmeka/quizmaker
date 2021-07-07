@@ -120,7 +120,7 @@ class _AddQuestionState extends State<AddQuestion> {
                     onTap: () {
                       Navigator.pop(context);
                     },
-                      child: blueButton(context: context, label: "Submit", buttonWidth: MediaQuery.of(context).size.width/2 - 36)),
+                  child: blueButton(context: context, label: "Submit", buttonWidth: MediaQuery.of(context).size.width/2 - 36)),
                   SizedBox(width: 24,),
                   GestureDetector(
                       onTap: () {

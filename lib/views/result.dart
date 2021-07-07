@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_maker/views/MailQuiz.dart';
 import 'package:quiz_maker/views/submit_quiz.dart';
 import 'package:quiz_maker/widgets/widgets.dart';
 
@@ -40,7 +41,7 @@ class _ResultsState extends State<Results> {
               GestureDetector(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SubmitQuiz()));
+                        MaterialPageRoute(builder: (context) => MailQuiz()));
                   },
                   child: blueButton(
                       context: context,

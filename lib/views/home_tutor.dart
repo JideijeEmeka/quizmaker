@@ -56,7 +56,7 @@ class _Home_TutorState extends State<Home_Tutor> {
     super.initState();
   }
 
-  //AlertDialog
+  //SignOut AlertDialog
   showAlertDialog(BuildContext context) {
     Widget cancelButton = TextButton(
       child: Text("Cancel",
@@ -76,7 +76,7 @@ class _Home_TutorState extends State<Home_Tutor> {
             (route) => false);
       },
     );
-    AlertDialog alertDialog = AlertDialog(
+    AlertDialog signOutDialog = AlertDialog(
       title: Text("Sign Out"),
       content: Text("Are you sure you want to Signout?"),
       actions: [
@@ -87,9 +87,12 @@ class _Home_TutorState extends State<Home_Tutor> {
     showDialog(
         context: context,
         builder: (BuildContext context) {
-          return alertDialog;
+          return signOutDialog;
         });
   }
+
+  // DeleteQuiz AlertDialog
+  showDeleteAlertDialog(BuildContext context) {}
 
   @override
   Widget build(BuildContext context) {
@@ -176,6 +179,17 @@ class _Home_TutorState extends State<Home_Tutor> {
           Expanded(
             child: quizList(),
           ),
+          SizedBox(height: 13),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              appBar(context),
+              Text("(Powered by Unn...)",
+                  style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                  ))
+            ],
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
@@ -209,6 +223,11 @@ class QuizTile extends StatelessWidget {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => PlayQuiz(quizId: quizid)));
       },
+      onLongPress: () {
+        showDeleteAlertDialog(context);
+        // deleteQuizData(quizid);
+        // opens delete dialog
+      },
       child: Container(
         margin: EdgeInsets.only(bottom: 10),
         height: 150,
@@ -234,7 +253,8 @@ class QuizTile extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 22,
-                        fontWeight: FontWeight.bold, shadows: <Shadow> [
+                        fontWeight: FontWeight.bold,
+                        shadows: <Shadow>[
                           Shadow(
                             offset: Offset(2, 2),
                             blurRadius: 2.2,
@@ -255,21 +275,39 @@ class QuizTile extends StatelessWidget {
                 ],
               ),
             ),
-            Positioned(
-              bottom: -10,
-              right: 0,
-              height: 50,
-              width: 100,
-              child: ElevatedButton(
-                child: Text("Delete Quiz", style: TextStyle(color: Colors.white, fontSize: 17,)),
-                onPressed: () {},)),
-                SizedBox(
-                    width: 5,
-                  ),
-                Icon(Icons.delete),
           ],
         ),
       ),
     );
+  }
+
+  void showDeleteAlertDialog(BuildContext context) {
+    Widget cancelButton = TextButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        child: Text("Cancel",
+            style: TextStyle(color: Colors.red, fontWeight: FontWeight.w800)));
+    Widget continueButton = TextButton(
+        onPressed: () {
+          
+          // Navigator.push(
+          //     context, MaterialPageRoute(builder: (context) => DeleteQuiz()));
+        },
+        child: Text("Continue",
+            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w800)));
+    AlertDialog deleteDialog = AlertDialog(
+      title: Text("Delete Quiz"),
+      content: Text("Are you Sure you want to delete this Quiz?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return deleteDialog;
+        });
   }
 }
