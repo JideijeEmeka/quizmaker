@@ -1,8 +1,10 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:quiz_maker/helper/functions.dart';
 import 'package:quiz_maker/services/auth.dart';
 import 'package:quiz_maker/views/signin_tutor.dart';
-import 'package:quiz_maker/views/signup_tutor.dart';
+import 'package:quiz_maker/views/signup.dart';
 import 'package:quiz_maker/widgets/widgets.dart';
 
 import 'home.dart';
@@ -16,7 +18,6 @@ class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
   String email, password;
   AuthService authService = new AuthService();
-
   bool _isLoading = false;
   bool _secureText = true;
   String _passwordError;
@@ -28,7 +29,7 @@ class _SignInState extends State<SignIn> {
         _isLoading = true;
       });
       await authService.signInEmailandPass(email, password).then((val) {
-        if (val != null) {
+        if (!val == null) {
           setState(() {
             _isLoading = false;
           });
@@ -39,7 +40,6 @@ class _SignInState extends State<SignIn> {
       });
     }
   }
-
   @override
   Widget build(BuildContext context) {
     // final size = MediaQuery.of(context).size;
@@ -64,22 +64,13 @@ class _SignInState extends State<SignIn> {
                 child: Column(
                   children: [
                     Spacer(),
-                    SizedBox(
-                      width: 24,
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignIn_Tutor()));
-                        },
-                        child: blueButton(
-                            context: context,
-                            label: "Tutor Sign In",
-                            buttonWidth:
-                                MediaQuery.of(context).size.width / 2 - 36)),
-                    SizedBox(height: 20),
+                    Text("Signin As a Student",
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 23,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.w500)),
+                    SizedBox(height: 23),
                     TextFormField(
                       validator: (val) {
                         if (val.isEmpty) {
@@ -166,23 +157,58 @@ class _SignInState extends State<SignIn> {
                     SizedBox(
                       height: 15,
                     ),
-                    Container(
-                        child: GestureDetector(
-                      onTap: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignUp_tutor()));
-                      },
-                      child: Text(
-                        "Create Account",
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    IntrinsicHeight(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                              child: GestureDetector(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUp()));
+                            },
+                            child: Text(
+                              "Create Account",
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          VerticalDivider(
+                            color: Colors.black,
+                            thickness: 3,
+                            width: 20,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Container(
+                              child: GestureDetector(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignIn_Tutor()));
+                            },
+                            child: Text(
+                              "Tutor SignIn",
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )),
+                        ],
                       ),
-                    )),
+                    ),
                     SizedBox(
                       height: 80,
                     ),

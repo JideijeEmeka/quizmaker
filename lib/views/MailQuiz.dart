@@ -51,8 +51,8 @@ class _MailQuizState extends State<MailQuiz> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(9),
                           ),
-                          labelText: "Your RegNo",
-                          // enabled: false,
+                          labelText: "RegNo",
+                            enabled: false,
                         ),
                       ),
                     SizedBox(height: 20),

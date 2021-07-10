@@ -15,8 +15,11 @@ class _SignUpState extends State<SignUp> {
   String regNo, email, password;
   AuthService authService = new AuthService();
   bool _isloading = false;
+  bool _secureText = true;
+  String _passwordError;
+  TextEditingController _passwordController = TextEditingController();
 
-  SignUp() async {
+  signUp() async {
     if (_formKey.currentState.validate()) {
       setState(() {
         _isloading = true;
@@ -56,38 +59,30 @@ class _SignUpState extends State<SignUp> {
                 child: Column(
                   children: [
                     Spacer(),
-                    SizedBox(
-                      width: 24,
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignUp_tutor()));
-                        },
-                        child: blueButton(
-                            context: context,
-                            label: "Tutor Sign Up",
-                            buttonWidth:
-                                MediaQuery.of(context).size.width / 2 - 36)),
+                    Text("Register As a Student",
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 23,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.w500)),
+                    SizedBox(height: 23),
                     TextFormField(
                       validator: (val) {
-                        return val.isEmpty ? "Enter RegNo" : null;
+                        if (val.isEmpty) {
+                          return "Enter RegNo";
+                        } else if (!val.contains("/")) {
+                          return "Please enter a valid reg number";
+                        }
+                        return null;
+                        // return val.isEmpty ? "Enter Email" : null;
                       },
+                      maxLength: 25,
                       decoration: InputDecoration(
-                        hintText: "Regno",
-                      ),
-                      onChanged: (val) {
-                        regNo = val;
-                      },
-                    ),
-                    TextFormField(
-                      validator: (val) {
-                        return val.isEmpty ? "Enter Email" : null;
-                      },
-                      decoration: InputDecoration(
-                        hintText: "Email",
+                        prefixIcon: Icon(Icons.format_list_numbered),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(9)),
+                        hintText: "RegNo",
+                        labelText: "RegNo",
                       ),
                       onChanged: (val) {
                         email = val;
@@ -95,40 +90,97 @@ class _SignUpState extends State<SignUp> {
                     ),
                     SizedBox(height: 6),
                     TextFormField(
-                      obscureText: true,
                       validator: (val) {
-                        return val.isEmpty ? "Enter Password" : null;
+                        if (val.isEmpty) {
+                          return "Enter Email";
+                        } else if (!val.contains("@")) {
+                          return "Please enter a valid email address";
+                        }
+                        return null;
+                        // return val.isEmpty ? "Enter Email" : null;
                       },
+                      maxLength: 25,
                       decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.mail),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(9)),
+                        hintText: "Email",
+                        labelText: "Email",
+                      ),
+                      onChanged: (val) {
+                        email = val;
+                      },
+                    ),
+                    SizedBox(height: 6),
+                    TextFormField(
+                      maxLength: 20,
+                      obscureText: _secureText,
+                      validator: (val) {
+                        if (val.isEmpty) {
+                          return "Enter Password";
+                        } else if (_passwordController.text.length < 6) {
+                          return "Enter at least 6 Characters";
+                        } else {
+                          return null;
+                        }
+                        // return val.isEmpty ? "Enter Password" : null;
+                      },
+                      controller: _passwordController,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.lock),
+                        errorText: _passwordError,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _secureText ? Icons.remove_red_eye : Icons.security,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _secureText = !_secureText;
+                            });
+                          },
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10)),
                         hintText: "Password",
+                        labelText: "Password",
                       ),
                       onChanged: (val) {
                         password = val;
                       },
                     ),
                     SizedBox(
-                      height: 24,
+                      height: 2,
                     ),
-                    GestureDetector(
-                        onTap: () {
-                          SignUp();
-                        },
-                        child: blueButton(
-                            context: context,
-                            label: "Send",
-                            buttonWidth:
-                                MediaQuery.of(context).size.width / 2 - 36)),
+                    InkWell(
+                      onTap: () {
+                        signUp();
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 20),
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width / 2 - 36,
+                        child: Text(
+                          "Register",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
                     SizedBox(
                       height: 15,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Already have an account? ",
-                          style: TextStyle(fontSize: 15.5),
-                        ),
-                        GestureDetector(
+                    IntrinsicHeight(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            child: GestureDetector(
                             onTap: () {
                               Navigator.pushReplacement(
                                   context,
@@ -136,12 +188,44 @@ class _SignUpState extends State<SignUp> {
                                       builder: (context) => SignIn()));
                             },
                             child: Text(
-                              "Sign In",
+                              "Log In",
                               style: TextStyle(
-                                  fontSize: 15.5,
-                                  decoration: TextDecoration.underline),
-                            ))
-                      ],
+                                color: Colors.blue,
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          VerticalDivider(
+                            color: Colors.black,
+                            thickness: 3,
+                            width: 20,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Container(
+                              child: GestureDetector(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUp_tutor()));
+                            },
+                            child: Text(
+                              "Tutor SignUp",
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 80,

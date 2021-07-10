@@ -78,9 +78,9 @@ class _CreateQuizState extends State<CreateQuiz> {
                     ),
                     TextFormField(
                       validator: (val) =>
-                          val.isEmpty ? "Enter Quiz Title" : null,
+                          val.isEmpty ? "Enter Course Code" : null,
                       decoration: InputDecoration(
-                        hintText: "Quiz Title",
+                        hintText: "Course Code",
                       ),
                       onChanged: (val) {
                         quizTitle = val;
@@ -91,9 +91,9 @@ class _CreateQuizState extends State<CreateQuiz> {
                     ),
                     TextFormField(
                       validator: (val) =>
-                          val.isEmpty ? "Enter Quiz Description" : null,
+                          val.isEmpty ? "Enter Course Title" : null,
                       decoration: InputDecoration(
-                        hintText: "Quiz Description",
+                        hintText: "Course Title",
                       ),
                       onChanged: (val) {
                         quizDescription = val;
