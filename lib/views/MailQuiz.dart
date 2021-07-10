@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:quiz_maker/widgets/widgets.dart';
 
 class MailQuiz extends StatefulWidget {
@@ -46,11 +45,7 @@ class _MailQuizState extends State<MailQuiz> {
                 child: Column(
                   children: [
                     SizedBox(height: 60),
-                    GestureDetector(
-                      onTap: () {
-                        FocusScope.of(context).unfocus();
-                      },
-                      child: TextFormField(
+                    TextFormField(
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.format_list_numbered),
                           border: OutlineInputBorder(
@@ -60,7 +55,6 @@ class _MailQuizState extends State<MailQuiz> {
                           // enabled: false,
                         ),
                       ),
-                    ),
                     SizedBox(height: 20),
                     TextFormField(
                       decoration: InputDecoration(
@@ -88,6 +82,28 @@ class _MailQuizState extends State<MailQuiz> {
                           borderRadius: BorderRadius.circular(9),
                         ),
                         labelText: "Lecturer`s mail",
+                        enabled: true,
+                      ),
+                      onChanged: (val) {
+                        email = val;
+                      },
+                    ),
+                    SizedBox(height: 20),
+                    TextFormField(
+                      validator: (val) {
+                        if (val.isEmpty) {
+                          return "Enter Student`s email";
+                        } else if (!val.contains("@")) {
+                          return "Enter a valid email";
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.email),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(9),
+                        ),
+                        labelText: "Student`s mail",
                         enabled: true,
                       ),
                       onChanged: (val) {
