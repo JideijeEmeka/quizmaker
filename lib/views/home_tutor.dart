@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_maker/services/database.dart';
@@ -40,6 +41,8 @@ class _Home_TutorState extends State<Home_Tutor> {
                         desc: snapshot.data.docs[index]["quizDesc"],
                         title: snapshot.data.docs[index]["quizTitle"],
                         quizid: snapshot.data.docs[index]["quizId"],
+                        quizSession: snapshot.data.docs[index]["quizSession"],
+                        quizSemester: snapshot.data.docs[index]["quizSemester"],
                       );
                     });
           }),
@@ -209,12 +212,17 @@ class QuizTile extends StatelessWidget {
   final String title;
   final String desc;
   final String quizid;
+  final String quizSession;
+  final String quizSemester;
 
-  QuizTile(
-      {@required this.imgUrl,
-      @required this.title,
-      @required this.desc,
-      @required this.quizid});
+  QuizTile({
+    @required this.imgUrl,
+    @required this.title,
+    @required this.desc,
+    @required this.quizid,
+    @required this.quizSession,
+    @required this.quizSemester,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -272,6 +280,26 @@ class QuizTile extends StatelessWidget {
                         fontSize: 15,
                         fontWeight: FontWeight.w800),
                   ),
+                  SizedBox(
+                    height: 1,
+                  ),
+                  Text(
+                    "Session: " + quizSession,
+                    style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w800),
+                  ),
+                  SizedBox(
+                    height: 1,
+                  ),
+                  Text(
+                    "Semester: " + quizSemester,
+                    style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w800),
+                  ),
                 ],
               ),
             ),
@@ -279,6 +307,24 @@ class QuizTile extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  deleteQuiz() async {
+    await FirebaseFirestore.instance
+        .collection("Quiz")
+        .where("quizId", isEqualTo: "fvdAEmQlHgbyWkin")
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        FirebaseFirestore.instance
+            .collection("Quiz")
+            .doc(element.id)
+            .delete()
+            .then((value) {
+          print("success");
+        });
+      });
+    });
   }
 
   void showDeleteAlertDialog(BuildContext context) {
@@ -290,7 +336,7 @@ class QuizTile extends StatelessWidget {
             style: TextStyle(color: Colors.red, fontWeight: FontWeight.w800)));
     Widget continueButton = TextButton(
         onPressed: () {
-          
+          deleteQuiz();
           // Navigator.push(
           //     context, MaterialPageRoute(builder: (context) => DeleteQuiz()));
         },

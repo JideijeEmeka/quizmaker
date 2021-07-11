@@ -13,7 +13,7 @@ class CreateQuiz extends StatefulWidget {
 
 class _CreateQuizState extends State<CreateQuiz> {
   final _formKey = GlobalKey<FormState>();
-  String quizImageUrl, quizTitle, quizDescription, quizId;
+  String quizImageUrl, quizTitle, quizDescription, quizId, quizSession, quizSemester;
   DatabaseService databaseService = new DatabaseService();
   bool _isLoading = false;
 
@@ -29,6 +29,8 @@ class _CreateQuizState extends State<CreateQuiz> {
         "quizImgUrl": quizImageUrl,
         "quizTitle": quizTitle,
         "quizDesc": quizDescription,
+        "quizSession": quizSession,
+        "quizSemester": quizSemester,
       };
 
       await databaseService.addQuizData(quizMap, quizId).then((value) {
@@ -97,6 +99,32 @@ class _CreateQuizState extends State<CreateQuiz> {
                       ),
                       onChanged: (val) {
                         quizDescription = val;
+                      },
+                    ),
+                     SizedBox(
+                      height: 6,
+                    ),
+                    TextFormField(
+                      validator: (val) =>
+                          val.isEmpty ? "Enter Academic Session" : null,
+                      decoration: InputDecoration(
+                        hintText: "Academic Session (e.g 2018/19)",
+                      ),
+                      onChanged: (val) {
+                        quizSession = val;
+                      },
+                    ),
+                     SizedBox(
+                      height: 6,
+                    ),
+                    TextFormField(
+                      validator: (val) =>
+                          val.isEmpty ? "Enter Semester" : null,
+                      decoration: InputDecoration(
+                        hintText: "Semester",
+                      ),
+                      onChanged: (val) {
+                        quizSemester = val;
                       },
                     ),
                     Spacer(),

@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_maker/services/database.dart';
@@ -22,7 +21,9 @@ class _HomeState extends State<Home> {
 
   Widget quizList() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 25,),
+      margin: EdgeInsets.symmetric(
+        horizontal: 25,
+      ),
       child: StreamBuilder(
           stream: quizStream,
           builder: (context, snapshot) {
@@ -33,11 +34,12 @@ class _HomeState extends State<Home> {
                     itemCount: snapshot.data.docs.length,
                     itemBuilder: (context, index) {
                       return QuizTile(
-                        imgUrl: snapshot.data.docs[index]["quizImgUrl"],
-                        desc: snapshot.data.docs[index]["quizDesc"],
-                        title: snapshot.data.docs[index]["quizTitle"],
-                        quizid: snapshot.data.docs[index]["quizId"],
-                      );
+                          imgUrl: snapshot.data.docs[index]["quizImgUrl"],
+                          desc: snapshot.data.docs[index]["quizDesc"],
+                          title: snapshot.data.docs[index]["quizTitle"],
+                          quizid: snapshot.data.docs[index]["quizId"],
+                          quizSession: snapshot.data.docs[index]["quizSession"],
+                          quizSemester: snapshot.data.docs[index]["quizSemester"],);
                     });
           }),
     );
@@ -56,19 +58,21 @@ class _HomeState extends State<Home> {
   //AlertDialog
   showAlertDialog(BuildContext context) {
     Widget cancelButton = TextButton(
-      child: Text("Cancel", style: TextStyle(color: Colors.red, fontWeight: FontWeight.w800)),
+      child: Text("Cancel",
+          style: TextStyle(color: Colors.red, fontWeight: FontWeight.w800)),
       onPressed: () {
         Navigator.pop(context);
       },
     );
     Widget continueButton = TextButton(
-      child: Text("Continue", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w800)),
+      child: Text("Continue",
+          style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w800)),
       onPressed: () {
         signOut();
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => SignIn()),
-                  (route) => false);
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => SignIn()),
+            (route) => false);
       },
     );
     AlertDialog signOutDialog = AlertDialog(
@@ -175,7 +179,10 @@ class _HomeState extends State<Home> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               appBar(context),
-              Text("(Powered by Unn...)", style: TextStyle(fontStyle: FontStyle.italic,)),
+              Text("(Powered by Unn...)",
+                  style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                  )),
             ],
           ),
         ],
@@ -189,12 +196,16 @@ class QuizTile extends StatelessWidget {
   final String title;
   final String desc;
   final String quizid;
+  final String quizSession;
+  final String quizSemester;
 
   QuizTile(
       {@required this.imgUrl,
       @required this.title,
       @required this.desc,
-      @required this.quizid});
+      @required this.quizid,
+      @required this.quizSession,
+      @required this.quizSemester});
 
   @override
   Widget build(BuildContext context) {
@@ -229,7 +240,8 @@ class QuizTile extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 22,
-                        fontWeight: FontWeight.bold, shadows: <Shadow> [
+                        fontWeight: FontWeight.bold,
+                        shadows: <Shadow>[
                           Shadow(
                             offset: Offset(2, 2),
                             blurRadius: 2.2,
@@ -242,6 +254,26 @@ class QuizTile extends StatelessWidget {
                   ),
                   Text(
                     desc,
+                    style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w800),
+                  ),
+                   SizedBox(
+                    height: 1,
+                  ),
+                  Text(
+                    "Session: " +quizSession,
+                    style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w800),
+                  ),
+                   SizedBox(
+                    height: 1,
+                  ),
+                  Text(
+                    "Semester: " +quizSemester,
                     style: TextStyle(
                         color: Colors.black54,
                         fontSize: 15,
