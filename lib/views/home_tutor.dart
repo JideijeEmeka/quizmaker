@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_maker/services/database.dart';
 import 'package:quiz_maker/views/play_quiz.dart';
+import 'package:quiz_maker/views/play_quizTutor.dart';
 import 'package:quiz_maker/views/signin_tutor.dart';
 import 'package:quiz_maker/widgets/widgets.dart';
 
@@ -229,12 +230,10 @@ class QuizTile extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => PlayQuiz(quizId: quizid)));
+            MaterialPageRoute(builder: (context) => PlayQuizTutor(quizId: quizid)));
       },
       onLongPress: () {
         showDeleteAlertDialog(context);
-        // deleteQuizData(quizid);
-        // opens delete dialog
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 10),
@@ -312,7 +311,7 @@ class QuizTile extends StatelessWidget {
   deleteQuiz() async {
     await FirebaseFirestore.instance
         .collection("Quiz")
-        .where("quizId", isEqualTo: "fvdAEmQlHgbyWkin")
+        .where("quizId", isEqualTo: quizid)
         .get()
         .then((value) {
       value.docs.forEach((element) {
@@ -321,7 +320,7 @@ class QuizTile extends StatelessWidget {
             .doc(element.id)
             .delete()
             .then((value) {
-          print("success");
+          print("success!");
         });
       });
     });
@@ -336,6 +335,7 @@ class QuizTile extends StatelessWidget {
             style: TextStyle(color: Colors.red, fontWeight: FontWeight.w800)));
     Widget continueButton = TextButton(
         onPressed: () {
+          Navigator.pop(context);
           deleteQuiz();
           // Navigator.push(
           //     context, MaterialPageRoute(builder: (context) => DeleteQuiz()));

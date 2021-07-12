@@ -22,7 +22,6 @@ class _SignIn_TutorState extends State<SignIn_Tutor> {
   String _passwordError;
   TextEditingController _passwordController = TextEditingController();
 
-
   SignIn_tutor() async {
     if (_formKey.currentState.validate()) {
       setState(() {
@@ -60,14 +59,20 @@ class _SignIn_TutorState extends State<SignIn_Tutor> {
               key: _formKey,
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 24),
-                  child: Column(
-                    children: [
-                      Spacer(),
-                      Text("Signin As a Tutor",
+                child: Column(
+                  children: [
+                    Spacer(),
+                    Image.asset(
+                      'lib/images/quizzlogo.jpg',
+                      width: 250,
+                      height: 150,
+                      fit: BoxFit.contain,
+                    ),
+                    Text("Signin As a Tutor",
                         style: TextStyle(
-                            color: Colors.blue,
-                            fontSize: 23,
-                            fontStyle: FontStyle.italic,
+                            color: Colors.black87,
+                            fontSize: 18,
+                            fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.w500)),
                     SizedBox(height: 23),
                     TextFormField(
@@ -78,8 +83,7 @@ class _SignIn_TutorState extends State<SignIn_Tutor> {
                           return "Please enter a valid email address";
                         }
                         return null;
-                        // return val.isEmpty ? "Enter Email" : null;
-                      },
+                        },
                       maxLength: 25,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.account_box),
@@ -92,7 +96,7 @@ class _SignIn_TutorState extends State<SignIn_Tutor> {
                         email = val;
                       },
                     ),
-                    SizedBox(height: 6),
+                    SizedBox(height: 5),
                     TextFormField(
                       maxLength: 20,
                       obscureText: _secureText,
@@ -211,8 +215,8 @@ class _SignIn_TutorState extends State<SignIn_Tutor> {
                     SizedBox(
                       height: 80,
                     ),
-                    ],
-                  ),
+                  ],
+                ),
               ),
             ),
     );

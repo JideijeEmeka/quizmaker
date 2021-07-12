@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_maker/helper/functions.dart';
 import 'package:quiz_maker/services/auth.dart';
-import 'package:quiz_maker/views/signin.dart';
 import 'package:quiz_maker/views/signin_tutor.dart';
 import 'package:quiz_maker/views/signup.dart';
 import 'package:quiz_maker/widgets/widgets.dart';
@@ -60,11 +59,16 @@ class _SignUp_tutorState extends State<SignUp_tutor> {
                 child: Column(
                   children: [
                     Spacer(),
+                    Image.asset('lib/images/quizzlogo.jpg',
+                    width: 250,
+                    height: 150,
+                    fit: BoxFit.contain,
+                    ),
                     Text("Register As a Tutor",
                         style: TextStyle(
-                            color: Colors.blue,
-                            fontSize: 23,
-                            fontStyle: FontStyle.italic,
+                            color: Colors.black87,
+                            fontSize: 18,
+                            fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.w500)),
                     SizedBox(height: 23),
                     TextFormField(
@@ -75,7 +79,6 @@ class _SignUp_tutorState extends State<SignUp_tutor> {
                           return "Please enter a valid staff number";
                         }
                         return null;
-                        // return val.isEmpty ? "Enter Email" : null;
                       },
                       maxLength: 25,
                       decoration: InputDecoration(
@@ -89,7 +92,7 @@ class _SignUp_tutorState extends State<SignUp_tutor> {
                         email = val;
                       },
                     ),
-                    SizedBox(height: 6),
+                    SizedBox(height: 5),
                     TextFormField(
                       validator: (val) {
                         if (val.isEmpty) {
@@ -98,7 +101,6 @@ class _SignUp_tutorState extends State<SignUp_tutor> {
                           return "Please enter a valid email address";
                         }
                         return null;
-                        // return val.isEmpty ? "Enter Email" : null;
                       },
                       maxLength: 25,
                       decoration: InputDecoration(
@@ -229,7 +231,7 @@ class _SignUp_tutorState extends State<SignUp_tutor> {
                       ),
                     ),
                     SizedBox(
-                      height: 80,
+                      height: 45,
                     ),
                   ],
                 ),

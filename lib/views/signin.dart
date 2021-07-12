@@ -64,11 +64,16 @@ class _SignInState extends State<SignIn> {
                 child: Column(
                   children: [
                     Spacer(),
+                    Image.asset('lib/images/quizzlogo.jpg',
+                    width: 250,
+                    height: 150,
+                    fit: BoxFit.contain,
+                    ),
                     Text("Signin As a Student",
                         style: TextStyle(
-                            color: Colors.blue,
-                            fontSize: 23,
-                            fontStyle: FontStyle.italic,
+                            color: Colors.black87,
+                            fontSize: 18,
+                            fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.w500)),
                     SizedBox(height: 23),
                     TextFormField(
@@ -79,7 +84,6 @@ class _SignInState extends State<SignIn> {
                           return "Please enter a valid email address";
                         }
                         return null;
-                        // return val.isEmpty ? "Enter Email" : null;
                       },
                       maxLength: 25,
                       decoration: InputDecoration(
@@ -93,7 +97,7 @@ class _SignInState extends State<SignIn> {
                         email = val;
                       },
                     ),
-                    SizedBox(height: 6),
+                    SizedBox(height: 5),
                     TextFormField(
                       maxLength: 20,
                       obscureText: _secureText,

@@ -59,11 +59,16 @@ class _SignUpState extends State<SignUp> {
                 child: Column(
                   children: [
                     Spacer(),
+                    Image.asset('lib/images/quizzlogo.jpg',
+                    width: 250,
+                    height: 150,
+                    fit: BoxFit.contain,
+                    ),
                     Text("Register As a Student",
                         style: TextStyle(
-                            color: Colors.blue,
-                            fontSize: 23,
-                            fontStyle: FontStyle.italic,
+                            color: Colors.black87,
+                            fontSize: 18,
+                            fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.w500)),
                     SizedBox(height: 23),
                     TextFormField(
@@ -74,7 +79,6 @@ class _SignUpState extends State<SignUp> {
                           return "Please enter a valid reg number";
                         }
                         return null;
-                        // return val.isEmpty ? "Enter Email" : null;
                       },
                       maxLength: 25,
                       decoration: InputDecoration(
@@ -88,7 +92,7 @@ class _SignUpState extends State<SignUp> {
                         email = val;
                       },
                     ),
-                    SizedBox(height: 6),
+                    SizedBox(height: 5),
                     TextFormField(
                       validator: (val) {
                         if (val.isEmpty) {
@@ -97,7 +101,6 @@ class _SignUpState extends State<SignUp> {
                           return "Please enter a valid email address";
                         }
                         return null;
-                        // return val.isEmpty ? "Enter Email" : null;
                       },
                       maxLength: 25,
                       decoration: InputDecoration(
@@ -228,7 +231,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                     SizedBox(
-                      height: 80,
+                      height: 45,
                     ),
                   ],
                 ),
