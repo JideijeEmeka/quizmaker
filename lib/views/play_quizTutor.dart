@@ -4,8 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_maker/models/question_model.dart';
 import 'package:quiz_maker/services/database.dart';
+import 'package:quiz_maker/views/home_tutor.dart';
 import 'package:quiz_maker/views/quiz_play_widgets.dart';
-import 'package:quiz_maker/views/result.dart';
 import 'package:quiz_maker/widgets/widgets.dart';
 
 class PlayQuizTutor extends StatefulWidget {
@@ -39,13 +39,8 @@ class _PlayQuizTutorState extends State<PlayQuizTutor> {
           print(timer.tick);
           currentSeconds = timer.tick;
           if (timer.tick >= timerMaxSeconds) {
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         builder: (context) => Results(
-            //             correct: _correctAnswer,
-            //             incorrect: _inCorrectAnswer,
-            //             total: total)));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Home_Tutor()));
             timer.cancel();
           }
         });
@@ -145,12 +140,12 @@ class _PlayQuizTutorState extends State<PlayQuizTutor> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          
-        },
-        icon: Icon(Icons.done),
-        label: Text("Submit Your Quiz")
-      ),
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Home_Tutor()));
+          },
+          icon: Icon(Icons.done),
+          label: Text("Preview Done!. Go to Home")),
     );
   }
 }

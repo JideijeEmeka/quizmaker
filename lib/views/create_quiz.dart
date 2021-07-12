@@ -13,7 +13,12 @@ class CreateQuiz extends StatefulWidget {
 
 class _CreateQuizState extends State<CreateQuiz> {
   final _formKey = GlobalKey<FormState>();
-  String quizImageUrl, quizTitle, quizDescription, quizId, quizSession, quizSemester;
+  String quizImageUrl,
+      quizTitle,
+      quizDescription,
+      quizId,
+      quizSession,
+      quizSemester;
   DatabaseService databaseService = new DatabaseService();
   bool _isLoading = false;
 
@@ -36,8 +41,8 @@ class _CreateQuizState extends State<CreateQuiz> {
       await databaseService.addQuizData(quizMap, quizId).then((value) {
         setState(() {
           _isLoading = false;
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => AddQuestion(quizId)));
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => AddQuestion(quizId)));
         });
       });
     }
@@ -65,6 +70,19 @@ class _CreateQuizState extends State<CreateQuiz> {
                 padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   children: [
+                    Spacer(),
+                    Image.asset(
+                      'lib/images/quizzlogo.jpg',
+                      width: 250,
+                      height: 150,
+                    ),
+                    Text("Create a New Quiz",
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 18,
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w500)),
+                    SizedBox(height: 12),
                     TextFormField(
                       validator: (val) =>
                           val.isEmpty ? "Enter Image Url" : null,
@@ -101,12 +119,18 @@ class _CreateQuizState extends State<CreateQuiz> {
                         quizDescription = val;
                       },
                     ),
-                     SizedBox(
+                    SizedBox(
                       height: 6,
                     ),
                     TextFormField(
-                      validator: (val) =>
-                          val.isEmpty ? "Enter Academic Session" : null,
+                      validator: (val) {
+                        if (val.isEmpty) {
+                          return "Enter Academic Session";
+                        } else if (!val.contains("/")) {
+                          return "Please enter a valid academic session";
+                        }
+                        return null;
+                      },
                       decoration: InputDecoration(
                         hintText: "Academic Session (e.g 2018/19)",
                       ),
@@ -114,12 +138,11 @@ class _CreateQuizState extends State<CreateQuiz> {
                         quizSession = val;
                       },
                     ),
-                     SizedBox(
+                    SizedBox(
                       height: 6,
                     ),
                     TextFormField(
-                      validator: (val) =>
-                          val.isEmpty ? "Enter Semester" : null,
+                      validator: (val) => val.isEmpty ? "Enter Semester" : null,
                       decoration: InputDecoration(
                         hintText: "Semester",
                       ),
@@ -132,9 +155,10 @@ class _CreateQuizState extends State<CreateQuiz> {
                         onTap: () {
                           createQuizOnline();
                         },
-                        child: blueButton(context: context, label: "Create Quiz")),
+                        child:
+                            blueButton(context: context, label: "Create Quiz")),
                     SizedBox(
-                      height: 60,
+                      height: 40,
                     ),
                   ],
                 ),

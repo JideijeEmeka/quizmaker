@@ -275,30 +275,48 @@ class QuizTile extends StatelessWidget {
                   Text(
                     desc,
                     style: TextStyle(
-                        color: Colors.black54,
+                        color: Colors.white,
                         fontSize: 15,
-                        fontWeight: FontWeight.w800),
-                  ),
+                        fontWeight: FontWeight.bold,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(2, 2),
+                            blurRadius: 2.2,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),
+                        ]),),
                   SizedBox(
                     height: 1,
                   ),
                   Text(
                     "Session: " + quizSession,
                     style: TextStyle(
-                        color: Colors.black54,
+                        color: Colors.white,
                         fontSize: 15,
-                        fontWeight: FontWeight.w800),
-                  ),
+                        fontWeight: FontWeight.bold,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(2, 2),
+                            blurRadius: 2.2,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),
+                        ]),),
                   SizedBox(
                     height: 1,
                   ),
                   Text(
                     "Semester: " + quizSemester,
                     style: TextStyle(
-                        color: Colors.black54,
+                        color: Colors.white,
                         fontSize: 15,
-                        fontWeight: FontWeight.w800),
-                  ),
+                        fontWeight: FontWeight.bold,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(2, 2),
+                            blurRadius: 2.2,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),
+                        ]),),
                 ],
               ),
             ),
