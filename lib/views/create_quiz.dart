@@ -84,8 +84,14 @@ class _CreateQuizState extends State<CreateQuiz> {
                             fontWeight: FontWeight.w500)),
                     SizedBox(height: 12),
                     TextFormField(
-                      validator: (val) =>
-                          val.isEmpty ? "Enter Image Url" : null,
+                      validator: (val) {
+                        if (val.isEmpty) {
+                          return "Enter Image Url";
+                        } else if (!val.contains("http")) {
+                          return "Enter valid Url";
+                        }
+                        return null;
+                      },
                       decoration: InputDecoration(
                         hintText: "Quiz Image Url",
                       ),
