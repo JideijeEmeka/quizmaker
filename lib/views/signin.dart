@@ -28,7 +28,7 @@ class _SignInState extends State<SignIn> {
       setState(() {
         _isLoading = true;
       });
-      await authService.signInEmailandPass(email, password).then((val) {
+    await authService.signInEmailandPass(email, password).then((val) {
         if (!val == null) {
           setState(() {
             _isLoading = false;
@@ -67,7 +67,6 @@ class _SignInState extends State<SignIn> {
                     Image.asset('lib/images/quizzlogo.jpg',
                     width: 250,
                     height: 150,
-                    fit: BoxFit.contain,
                     ),
                     Text("Signin As a Student",
                         style: TextStyle(

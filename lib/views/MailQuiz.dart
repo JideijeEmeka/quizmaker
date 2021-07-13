@@ -44,7 +44,18 @@ class _MailQuizState extends State<MailQuiz> {
                 margin: EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   children: [
-                    SizedBox(height: 60),
+                    SizedBox(height: 10),
+                    Image.asset('lib/images/quizzlogo.jpg',
+                    width: 250,
+                    height: 150,
+                    ),
+                    Text("Mail Your Score",
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 18,
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w500)),
+                    SizedBox(height: 15),
                     TextFormField(
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.format_list_numbered),
@@ -110,7 +121,7 @@ class _MailQuizState extends State<MailQuiz> {
                         email = val;
                       },
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 20),
                     GestureDetector(
                       onTap: () {
                         mailQuiz();

@@ -62,7 +62,6 @@ class _SignUp_tutorState extends State<SignUp_tutor> {
                     Image.asset('lib/images/quizzlogo.jpg',
                     width: 250,
                     height: 150,
-                    fit: BoxFit.contain,
                     ),
                     Text("Register As a Tutor",
                         style: TextStyle(

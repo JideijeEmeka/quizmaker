@@ -62,7 +62,6 @@ class _SignUpState extends State<SignUp> {
                     Image.asset('lib/images/quizzlogo.jpg',
                     width: 250,
                     height: 150,
-                    fit: BoxFit.contain,
                     ),
                     Text("Register As a Student",
                         style: TextStyle(

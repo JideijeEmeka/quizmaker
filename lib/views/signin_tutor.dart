@@ -66,7 +66,6 @@ class _SignIn_TutorState extends State<SignIn_Tutor> {
                       'lib/images/quizzlogo.jpg',
                       width: 250,
                       height: 150,
-                      fit: BoxFit.contain,
                     ),
                     Text("Signin As a Tutor",
                         style: TextStyle(
