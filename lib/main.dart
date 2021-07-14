@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:quiz_maker/services/connection.dart';
 import 'package:quiz_maker/views/home.dart';
 import 'package:quiz_maker/views/signin_tutor.dart';
 import 'helper/functions.dart';
@@ -32,7 +31,6 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     checkUserLoggedInStatus();
     super.initState();
-    DataCon();
   }
   
   @override

@@ -43,14 +43,4 @@ class DatabaseService {
       print(e);
     });
   }
-
-  deleteQuizData(Map quizData, String quizId) {
-    FirebaseFirestore.instance
-        .collection("Quiz")
-        .doc(quizId)
-        .delete()
-        .catchError((e) {
-      print(e);
-    });
-  }
 }

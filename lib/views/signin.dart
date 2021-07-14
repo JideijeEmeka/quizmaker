@@ -23,13 +23,13 @@ class _SignInState extends State<SignIn> {
   String _passwordError;
   TextEditingController _passwordController = TextEditingController();
 
-  SignIn() async {
+  signIn() async {
     if (_formKey.currentState.validate()) {
       setState(() {
         _isLoading = true;
       });
-    await authService.signInEmailandPass(email, password).then((val) {
-        if (!val == null) {
+      await authService.signInEmailandPass(email, password).then((val) {
+        if (val != null) {
           setState(() {
             _isLoading = false;
           });
@@ -138,7 +138,7 @@ class _SignInState extends State<SignIn> {
                     ),
                     InkWell(
                       onTap: () {
-                        SignIn();
+                        signIn();
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(vertical: 20),

@@ -188,7 +188,7 @@ class _Home_TutorState extends State<Home_Tutor> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               appBar(context),
-              Text("(Powered by Unn...)",
+              Text("(Powered by Emeks Tech...)",
                   style: TextStyle(
                     fontStyle: FontStyle.italic,
                   ))

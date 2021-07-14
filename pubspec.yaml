@@ -30,9 +30,8 @@ dependencies:
   shared_preferences: ^2.0.5
   random_string: ^2.1.0
   flutter_email_sender: ^5.0.0
-  # web_socket_channel: ^1.1.0`
   location: ^4.3.0
-  data_connection_checker: ^0.3.4
+  connectivity: ^3.0.6
 
 #dependency_overrides:
 #  shared_preferences: ^2.0.5
@@ -53,6 +52,7 @@ flutter:
   uses-material-design: true
   assets:
      - lib/images/quizzlogo.jpg
+     - lib/images/no-internet.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

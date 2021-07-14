@@ -34,12 +34,13 @@ class _HomeState extends State<Home> {
                     itemCount: snapshot.data.docs.length,
                     itemBuilder: (context, index) {
                       return QuizTile(
-                          imgUrl: snapshot.data.docs[index]["quizImgUrl"],
-                          desc: snapshot.data.docs[index]["quizDesc"],
-                          title: snapshot.data.docs[index]["quizTitle"],
-                          quizid: snapshot.data.docs[index]["quizId"],
-                          quizSession: snapshot.data.docs[index]["quizSession"],
-                          quizSemester: snapshot.data.docs[index]["quizSemester"],);
+                        imgUrl: snapshot.data.docs[index]["quizImgUrl"],
+                        desc: snapshot.data.docs[index]["quizDesc"],
+                        title: snapshot.data.docs[index]["quizTitle"],
+                        quizid: snapshot.data.docs[index]["quizId"],
+                        quizSession: snapshot.data.docs[index]["quizSession"],
+                        quizSemester: snapshot.data.docs[index]["quizSemester"],
+                      );
                     });
           }),
     );
@@ -179,7 +180,7 @@ class _HomeState extends State<Home> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               appBar(context),
-              Text("(Powered by Unn...)",
+              Text("(Powered by Emeks Tech...)",
                   style: TextStyle(
                     fontStyle: FontStyle.italic,
                   )),
@@ -255,30 +256,49 @@ class QuizTile extends StatelessWidget {
                   Text(
                     desc,
                     style: TextStyle(
-                        color: Colors.black54,
+                        color: Colors.white,
                         fontSize: 15,
-                        fontWeight: FontWeight.w800),
+                        fontWeight: FontWeight.bold,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(2, 2),
+                            blurRadius: (2.2),
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          )
+                        ]),
                   ),
-                   SizedBox(
+                  SizedBox(
                     height: 1,
                   ),
                   Text(
-                    "Session: " +quizSession,
+                    "Session: " + quizSession,
                     style: TextStyle(
-                        color: Colors.black54,
+                        color: Colors.white,
                         fontSize: 15,
-                        fontWeight: FontWeight.w800),
-                  ),
-                   SizedBox(
+                        fontWeight: FontWeight.bold,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(2, 2),
+                            blurRadius: (2.2),
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          )
+                        ])),
+                  SizedBox(
                     height: 1,
                   ),
                   Text(
-                    "Semester: " +quizSemester,
+                    "Semester: " + quizSemester,
                     style: TextStyle(
-                        color: Colors.black54,
+                        color: Colors.white,
                         fontSize: 15,
-                        fontWeight: FontWeight.w800),
-                  )
+                        fontWeight: FontWeight.bold,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(2, 2),
+                            blurRadius: (2.2),
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          )
+                        ]))
                 ],
               ),
             )
