@@ -4,6 +4,7 @@ import 'package:quiz_maker/widgets/widgets.dart';
 
 class Results extends StatefulWidget {
   final int correct, incorrect, total;
+  
   Results(
       {@required this.correct, @required this.incorrect, @required this.total});
 

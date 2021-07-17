@@ -26,6 +26,10 @@ class DatabaseService {
     return FirebaseFirestore.instance.collection("Quiz").snapshots();
   }
 
+  // getMailData() async {
+  //   return FirebaseFirestore.instance.collection("Mail").snapshots();
+  // }
+
   getQuizData(String quizId) async {
     return await FirebaseFirestore.instance
         .collection("Quiz")

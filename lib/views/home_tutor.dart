@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_maker/services/database.dart';
-import 'package:quiz_maker/views/play_quiz.dart';
 import 'package:quiz_maker/views/play_quizTutor.dart';
 import 'package:quiz_maker/views/signin_tutor.dart';
 import 'package:quiz_maker/widgets/widgets.dart';
@@ -325,7 +324,7 @@ class QuizTile extends StatelessWidget {
       ),
     );
   }
-
+  
   deleteQuiz() async {
     await FirebaseFirestore.instance
         .collection("Quiz")

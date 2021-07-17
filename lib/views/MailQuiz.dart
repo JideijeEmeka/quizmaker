@@ -40,7 +40,7 @@ class _MailQuizState extends State<MailQuiz> {
             )
           : Form(
               key: _formkey,
-              child: Container(
+              child: SingleChildScrollView(child: Center(child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   children: [
@@ -55,7 +55,18 @@ class _MailQuizState extends State<MailQuiz> {
                             fontSize: 18,
                             fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.w500)),
-                    SizedBox(height: 15),
+                            SizedBox(height: 15),
+                    TextFormField(
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.account_box),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(9),
+                          ),
+                          labelText: "Name",
+                            // enabled: false,
+                        ),
+                      ),
+                    SizedBox(height: 20),
                     TextFormField(
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.format_list_numbered),
@@ -63,7 +74,7 @@ class _MailQuizState extends State<MailQuiz> {
                             borderRadius: BorderRadius.circular(9),
                           ),
                           labelText: "RegNo",
-                            enabled: false,
+                            // enabled: false,
                         ),
                       ),
                     SizedBox(height: 20),
@@ -143,9 +154,10 @@ class _MailQuizState extends State<MailQuiz> {
                         ),
                       ),
                     ),
+                    SizedBox(height: 20),
                   ],
                 ),
-              ),
+              ),),)
             ),
     );
   }
