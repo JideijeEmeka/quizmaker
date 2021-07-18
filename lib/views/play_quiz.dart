@@ -70,9 +70,9 @@ class _PlayQuizState extends State<PlayQuiz> {
       optionsMap["option4"],
     ];
 
-    if (!shuffled) {
-      options.shuffle();
-      shuffled = true;
+    if (!shuffled ) {
+        options.shuffle();
+        shuffled = true;
     }
 
     questionModel.option1 = options[0];
@@ -111,7 +111,7 @@ class _PlayQuizState extends State<PlayQuiz> {
         elevation: 0.0,
         iconTheme: IconThemeData(color: Colors.black54),
       ),
-      body: Container(
+      body: SingleChildScrollView(child: Center(child: Container(
         child: Column(
           children: [
             SizedBox(
@@ -143,20 +143,19 @@ class _PlayQuizState extends State<PlayQuiz> {
                     })
           ],
         ),
-      ),
+      ),),),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => Results(
-                      correct: _correctAnswer,
-                      incorrect: _inCorrectAnswer,
-                      total: total)));
-        },
-        icon: Icon(Icons.done),
-        label: Text("Submit Your Quiz")
-      ),
+          onPressed: () {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Results(
+                        correct: _correctAnswer,
+                        incorrect: _inCorrectAnswer,
+                        total: total)));
+          },
+          icon: Icon(Icons.done),
+          label: Text("Submit Your Quiz")),
     );
   }
 }

@@ -54,7 +54,7 @@ class _SignUp_tutorState extends State<SignUp_tutor> {
             )
           : Form(
               key: _formKey,
-              child: Container(
+              child: SingleChildScrollView(child: Center(child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   children: [
@@ -234,7 +234,7 @@ class _SignUp_tutorState extends State<SignUp_tutor> {
                     ),
                   ],
                 ),
-              ),
+              ),),)
             ),
     );
   }

@@ -4,7 +4,7 @@ import 'package:quiz_maker/widgets/widgets.dart';
 
 class Results extends StatefulWidget {
   final int correct, incorrect, total;
-  
+
   Results(
       {@required this.correct, @required this.incorrect, @required this.total});
 
@@ -13,7 +13,6 @@ class Results extends StatefulWidget {
 }
 
 class _ResultsState extends State<Results> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +39,10 @@ class _ResultsState extends State<Results> {
               ),
               GestureDetector(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MailQuiz()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MailQuiz(widget.correct)));
                   },
                   child: blueButton(
                       context: context,

@@ -57,11 +57,11 @@ class _SignIn_TutorState extends State<SignIn_Tutor> {
             )
           : Form(
               key: _formKey,
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 24),
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   children: [
-                    Spacer(),
+                    SizedBox(height: 10),
                     Image.asset(
                       'lib/images/quizzlogo.jpg',
                       width: 250,
@@ -82,7 +82,7 @@ class _SignIn_TutorState extends State<SignIn_Tutor> {
                           return "Please enter a valid email address";
                         }
                         return null;
-                        },
+                      },
                       maxLength: 25,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.account_box),
@@ -216,8 +216,7 @@ class _SignIn_TutorState extends State<SignIn_Tutor> {
                     ),
                   ],
                 ),
-              ),
-            ),
+              )),
     );
   }
 }
