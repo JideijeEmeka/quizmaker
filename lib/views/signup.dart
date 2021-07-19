@@ -54,14 +54,15 @@ class _SignUpState extends State<SignUp> {
             )
           : Form(
               key: _formKey,
-              child: SingleChildScrollView(child: Center(child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 24),
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   children: [
-                    Spacer(),
-                    Image.asset('lib/images/quizzlogo.jpg',
-                    width: 250,
-                    height: 150,
+                    // SizedBox(height: 10),
+                    Image.asset(
+                      'lib/images/quizzlogo.jpg',
+                      width: 250,
+                      height: 150,
                     ),
                     Text("Register As a Student",
                         style: TextStyle(
@@ -182,7 +183,7 @@ class _SignUpState extends State<SignUp> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            child: GestureDetector(
+                              child: GestureDetector(
                             onTap: () {
                               Navigator.pushReplacement(
                                   context,
@@ -234,8 +235,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ],
                 ),
-              ),),)
-            ),
+              )),
     );
   }
 }

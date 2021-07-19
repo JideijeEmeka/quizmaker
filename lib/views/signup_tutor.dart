@@ -54,14 +54,15 @@ class _SignUp_tutorState extends State<SignUp_tutor> {
             )
           : Form(
               key: _formKey,
-              child: SingleChildScrollView(child: Center(child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 24),
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   children: [
-                    Spacer(),
-                    Image.asset('lib/images/quizzlogo.jpg',
-                    width: 250,
-                    height: 150,
+                    // SizedBox(height: 10,),
+                    Image.asset(
+                      'lib/images/quizzlogo.jpg',
+                      width: 250,
+                      height: 150,
                     ),
                     Text("Register As a Tutor",
                         style: TextStyle(
@@ -133,7 +134,9 @@ class _SignUp_tutorState extends State<SignUp_tutor> {
                         errorText: _passwordError,
                         suffixIcon: IconButton(
                           icon: Icon(
-                            _secureText ? Icons.remove_red_eye : Icons.security,
+                            _secureText
+                                ? Icons.remove_red_eye
+                                : Icons.security,
                           ),
                           onPressed: () {
                             setState(() {
@@ -187,7 +190,8 @@ class _SignUp_tutorState extends State<SignUp_tutor> {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SignIn_Tutor()));
+                                      builder: (context) =>
+                                          SignIn_Tutor()));
                             },
                             child: Text(
                               "Log In",
@@ -234,8 +238,7 @@ class _SignUp_tutorState extends State<SignUp_tutor> {
                     ),
                   ],
                 ),
-              ),),)
-            ),
+              )),
     );
   }
 }

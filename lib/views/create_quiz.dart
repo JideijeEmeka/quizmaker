@@ -6,14 +6,8 @@ import 'package:random_string/random_string.dart';
 
 import 'addquestion.dart';
 
-// import 'package:http/http.dart' as http;
 
 class CreateQuiz extends StatefulWidget {
-  // send(int score) async {
-  //   Uri uri = Uri.https("qu.he.com", "/");
-
-  //   await http.post(uri, body: {"score": score, "reg_no": "12413"});
-  // }
 
 
   @override
@@ -76,111 +70,107 @@ class _CreateQuizState extends State<CreateQuiz> {
           : Form(
               key: _formKey,
               child: SingleChildScrollView(
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 24),
-                    child: Column(
-                      children: [
-                        Spacer(),
-                        Image.asset(
-                          'lib/images/quizzlogo.jpg',
-                          width: 250,
-                          height: 150,
-                        ),
-                        Text("Create a New Quiz",
-                            style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 18,
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w500)),
-                        SizedBox(height: 12),
-                        TextFormField(
-                          validator: (val) {
-                            if (val.isEmpty) {
-                              return "Enter Image Url";
-                            } else if (!val.contains("http")) {
-                              return "Enter valid Url";
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                            hintText: "Quiz Image Url",
-                          ),
-                          onChanged: (val) {
-                            quizImageUrl = val;
-                          },
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        TextFormField(
-                          validator: (val) =>
-                              val.isEmpty ? "Enter Course Code" : null,
-                          decoration: InputDecoration(
-                            hintText: "Course Code",
-                          ),
-                          onChanged: (val) {
-                            quizTitle = val;
-                          },
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        TextFormField(
-                          validator: (val) =>
-                              val.isEmpty ? "Enter Course Title" : null,
-                          decoration: InputDecoration(
-                            hintText: "Course Title",
-                          ),
-                          onChanged: (val) {
-                            quizDescription = val;
-                          },
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        TextFormField(
-                          validator: (val) {
-                            if (val.isEmpty) {
-                              return "Enter Academic Session";
-                            } else if (!val.contains("/")) {
-                              return "Please enter a valid academic session";
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                            hintText: "Academic Session (e.g 2018/19)",
-                          ),
-                          onChanged: (val) {
-                            quizSession = val;
-                          },
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        TextFormField(
-                          validator: (val) =>
-                              val.isEmpty ? "Enter Semester" : null,
-                          decoration: InputDecoration(
-                            hintText: "Semester",
-                          ),
-                          onChanged: (val) {
-                            quizSemester = val;
-                          },
-                        ),
-                        Spacer(),
-                        GestureDetector(
-                            onTap: () {
-                              createQuizOnline();
-                            },
-                            child: blueButton(
-                                context: context, label: "Create Quiz")),
-                        SizedBox(
-                          height: 40,
-                        ),
-                      ],
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: Column(
+                  children: [
+                    // SizedBox(height: 10,),
+                    Image.asset(
+                      'lib/images/quizzlogo.jpg',
+                      width: 250,
+                      height: 150,
                     ),
-                  ),
+                    Text("Create a New Quiz",
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 18,
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w500)),
+                    SizedBox(height: 12),
+                    TextFormField(
+                      validator: (val) {
+                        if (val.isEmpty) {
+                          return "Enter Image Url";
+                        } else if (!val.contains("http")) {
+                          return "Enter valid Url";
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        hintText: "Quiz Image Url",
+                      ),
+                      onChanged: (val) {
+                        quizImageUrl = val;
+                      },
+                    ),
+                    SizedBox(
+                      height: 6,
+                    ),
+                    TextFormField(
+                      validator: (val) =>
+                          val.isEmpty ? "Enter Course Code" : null,
+                      decoration: InputDecoration(
+                        hintText: "Course Code",
+                      ),
+                      onChanged: (val) {
+                        quizTitle = val;
+                      },
+                    ),
+                    SizedBox(
+                      height: 6,
+                    ),
+                    TextFormField(
+                      validator: (val) =>
+                          val.isEmpty ? "Enter Course Title" : null,
+                      decoration: InputDecoration(
+                        hintText: "Course Title",
+                      ),
+                      onChanged: (val) {
+                        quizDescription = val;
+                      },
+                    ),
+                    SizedBox(
+                      height: 6,
+                    ),
+                    TextFormField(
+                      validator: (val) {
+                        if (val.isEmpty) {
+                          return "Enter Academic Session";
+                        } else if (!val.contains("/")) {
+                          return "Please enter a valid academic session";
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        hintText: "Academic Session (e.g 2018/19)",
+                      ),
+                      onChanged: (val) {
+                        quizSession = val;
+                      },
+                    ),
+                    SizedBox(
+                      height: 6,
+                    ),
+                    TextFormField(
+                      validator: (val) =>
+                          val.isEmpty ? "Enter Semester" : null,
+                      decoration: InputDecoration(
+                        hintText: "Semester",
+                      ),
+                      onChanged: (val) {
+                        quizSemester = val;
+                      },
+                    ),
+                    Spacer(),
+                    GestureDetector(
+                        onTap: () {
+                          createQuizOnline();
+                        },
+                        child: blueButton(
+                            context: context, label: "Create Quiz")),
+                    SizedBox(
+                      height: 40,
+                    ),
+                  ],
                 ),
               )),
     );
