@@ -45,17 +45,6 @@ class _MailQuizState extends State<MailQuiz> {
       return null;
   }
 
-  // mailQuiz() {
-  //   if (_formkey.currentState.validate()) {
-  //     setState(() {
-  //       _isLoading = true;
-  //     });
-  //   } else if (val != null) {
-  //     setState(() {
-  //       _isLoading = false;
-  //     });
-  //   }
-  // }
   showAlertDialog(BuildContext context) {
     Widget continueButton = TextButton(
       child: Text("Ok",

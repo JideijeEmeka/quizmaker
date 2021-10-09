@@ -77,7 +77,7 @@ class _SignUpState extends State<SignUp> {
                           return "Enter RegNo";
                         } else if (!val.contains("/")) {
                           return "Please enter a valid reg number";
-                        }
+                        } 
                         return null;
                       },
                       maxLength: 25,

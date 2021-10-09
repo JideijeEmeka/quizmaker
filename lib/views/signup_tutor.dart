@@ -50,7 +50,7 @@ class _SignUp_tutorState extends State<SignUp_tutor> {
           ? Container(
               child: Center(
                 child: CircularProgressIndicator(),
-              ),
+               ),
             )
           : Form(
               key: _formKey,

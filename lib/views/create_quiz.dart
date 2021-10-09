@@ -69,8 +69,8 @@ class _CreateQuizState extends State<CreateQuiz> {
             )
           : Form(
               key: _formKey,
-              child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 24),
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   children: [
                     // SizedBox(height: 10,),
