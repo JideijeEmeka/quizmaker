@@ -15,7 +15,7 @@ class _SignUpState extends State<SignUp> {
   String regNo, email, password;
   AuthService authService = new AuthService();
   bool _isloading = false;
-  bool _secureText = true;
+  bool _secureText = true;  
   String _passwordError;
   TextEditingController _passwordController = TextEditingController();
 

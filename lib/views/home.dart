@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
         horizontal: 25,
       ),
       child: StreamBuilder(
-          stream: quizStream,
+          stream: quizStream,  
           builder: (context, snapshot) {
             // if(snapshot.data == null) return CircularProgressIndicator();
             return snapshot.data == null
