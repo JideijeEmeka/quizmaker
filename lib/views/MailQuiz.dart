@@ -18,7 +18,7 @@ class _MailQuizState extends State<MailQuiz> {
   final _formkey = GlobalKey<FormState>();
   bool _isLoading = false;
   String val, email, name, regNo;
-  UserModel _userModel;
+  UserModel _userModel;  
 
   TextEditingController nameController = new TextEditingController();
   TextEditingController regNoController = new TextEditingController();

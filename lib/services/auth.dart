@@ -9,7 +9,7 @@ class AuthService {
   }
 
   Future signInEmailandPass(String email, String password) async {
-    try {
+    try {   
       UserCredential authResult = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       User firebaseUser = authResult.user;

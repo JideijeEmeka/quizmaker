@@ -16,7 +16,7 @@ class Home_Tutor extends StatefulWidget {
 }
 
 class _Home_TutorState extends State<Home_Tutor> {
-  Stream quizStream;
+  Stream quizStream;  
   DatabaseService databaseService = new DatabaseService();
   FirebaseAuth auth = FirebaseAuth.instance;
 

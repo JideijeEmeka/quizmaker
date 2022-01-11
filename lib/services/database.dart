@@ -7,7 +7,7 @@ class DatabaseService {
         .doc(quizId)
         .set(quizData)
         .catchError((e) {
-      print(e.toString());
+      print(e.toString());  
     });
   }
 
