@@ -19,7 +19,7 @@ class PlayQuizTutor extends StatefulWidget {
 int total = 0;
 int _correctAnswer = 0;
 int _inCorrectAnswer = 0;
-int _notAttempted = 0;
+int _notAttempted = 0;   
 
 class _PlayQuizTutorState extends State<PlayQuizTutor> {
   final interval = const Duration(seconds: 1);

@@ -13,7 +13,7 @@ class _OtpTimerState extends State<OtpTimer> {
   final int timerMaxSeconds = 60;
 
   int currentSeconds = 0;  
-
+    
   String get timerText =>  
       '${((timerMaxSeconds - currentSeconds) ~/ 60).toString().padLeft(2, '0')}:${((timerMaxSeconds - currentSeconds) % 60).toString().padLeft(2, '0')}';
 

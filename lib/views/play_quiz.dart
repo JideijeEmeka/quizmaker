@@ -11,7 +11,7 @@ import 'package:quiz_maker/widgets/widgets.dart';
 class PlayQuiz extends StatefulWidget {
   final String quizId;
   PlayQuiz({this.quizId});
-
+    
   @override
   _PlayQuizState createState() => _PlayQuizState();
 }
