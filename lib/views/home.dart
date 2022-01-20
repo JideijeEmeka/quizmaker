@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
   DatabaseService databaseService = new DatabaseService();
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  signOut() async {
+  signOut() async { . 
     await auth.signOut();
   }
      

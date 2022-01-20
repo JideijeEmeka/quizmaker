@@ -17,7 +17,7 @@ class DatabaseService {
         .doc(quizId)
         .collection("QNA")
         .add(questionData)
-        .catchError((e) {
+        .catchError((e) {   
       print(e);
     });
   }

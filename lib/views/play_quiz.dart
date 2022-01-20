@@ -113,7 +113,7 @@ class _PlayQuizState extends State<PlayQuiz> {
       ),
       body: SingleChildScrollView(child: Center(child: Container(
         child: Column(
-          children: [
+          children: [ .  
             SizedBox(
               height: 10,
             ),

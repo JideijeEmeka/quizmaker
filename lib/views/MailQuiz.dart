@@ -16,7 +16,7 @@ class MailQuiz extends StatefulWidget {
 
 class _MailQuizState extends State<MailQuiz> {
   final _formkey = GlobalKey<FormState>();
-  bool _isLoading = false;
+  bool _isLoading = false;  
   String val, email, name, regNo;
   UserModel _userModel;  
 
