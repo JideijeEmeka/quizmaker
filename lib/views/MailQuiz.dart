@@ -10,7 +10,7 @@ class MailQuiz extends StatefulWidget {
   MailQuiz(this.score);
 
   @override
-  _MailQuizState createState() => _MailQuizState();
+  _MailQuizState createState() => _MailQuizState();   
 }
 // "https://quiz-maker-v1.herokuapp.com/sendMail"
 

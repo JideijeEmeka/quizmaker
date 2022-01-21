@@ -10,7 +10,7 @@ import 'package:quiz_maker/widgets/widgets.dart';
 
 class PlayQuizTutor extends StatefulWidget {
   final String quizId;
-  PlayQuizTutor({this.quizId});  
+  PlayQuizTutor({this.quizId});        
 
   @override
   _PlayQuizTutorState createState() => _PlayQuizTutorState();
