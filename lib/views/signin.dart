@@ -103,7 +103,7 @@ class _SignInState extends State<SignIn> {
                         maxLength: 20,
                         obscureText: _secureText,
                         validator: (val) {
-                          if (val.isEmpty) {
+                          if (val.isEmpty) {   
                             return "Enter Password";
                           } else if (_passwordController.text.length < 6) {
                             return "Enter at least 6 Characters";

@@ -10,7 +10,7 @@ import 'package:quiz_maker/widgets/widgets.dart';
 
 import 'create_quiz.dart';
 
-class Home_Tutor extends StatefulWidget {
+class Home_Tutor extends StatefulWidget {  
   @override
   _Home_TutorState createState() => _Home_TutorState();
 }    
